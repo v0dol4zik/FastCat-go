@@ -1,11 +1,18 @@
-# <img src="https://github.com/user-attachments/assets/5e50d491-f22a-46a5-b6ac-135751340da4" hspace="10" width="37"  align="left"/><p><center>FastCat FastFetch Theme Pack.</center>
+# Fastcat-go
 
 <p align="center"><img src="https://github.com/user-attachments/assets/1f24e219-07fa-48e4-a5b5-2844e50c7d35"></p>
 
 ---
 
 ## What is FastCat?
-FastCat contains its own fastfetch configurations and uploads the selected configuration to your system!
+
+FastCat is a collection of ready-made configurations for [fastfetch](https://github.com/fastfetch-cli/fastfetch). Launch the menu, pick the config you like and apply it with a single keypress.
+
+Theme categories:
+
+- **Small Themes** — minimalist text logos
+- **Large Themes** — large ASCII art
+- **Visuals Themes** — image-based themes (require a graphics-capable terminal: Kitty, WezTerm, iTerm2, Ghostty, etc.)
 
 ---
 
@@ -15,32 +22,62 @@ FastCat contains its own fastfetch configurations and uploads the selected confi
 git clone --depth 1 https://github.com/m3tozz/FastCat.git && cd FastCat && bash ./fastcat.sh --help
 ```
 
-Install (Manual)
---
+### Install (Manual)
+
 ```bash
-git clone https://github.com/m3tozz/FastCat.git 
-```
-```bash
+git clone https://github.com/m3tozz/FastCat.git
 cd FastCat
-```
-```bash
 bash ./fastcat.sh --help
 ```
 
-Install Terminal Icons (CascadiaCode Nerd Font)
---
+### Go Edition (a single binary instead of bash scripts)
 
 ```bash
-bash ./install-icons.sh
+cd FastCat/go
+go build -o fastcat .
+./fastcat --shell
+```
+
+For details, see [go/README.md](go/README.md).
+
+---
+
+## Main Commands
+
+| Command | Action |
+|---|---|
+| `--shell` | interactive menu (Small / Large / Visuals) |
+| `--backup` | back up your current `~/.config/fastfetch` |
+| `--icons` | install the CascadiaCode Nerd Font |
+| `--version` / `--about` / `--help` | version / about / help |
+
+For the bash edition: `bash ./fastcat.sh -s`, `bash ./fastcat.sh --backup`, `bash ./install-icons.sh`.
+
+### Choosing a Theme
+
+1. Launch the menu (`--shell`).
+2. Pick a category: Small, Large or Visuals.
+3. Browse the themes:
+   - **`[G] Gallery`** — interactive gallery: `←`/`→` (or `j`/`k`) flip through previews, `Enter` applies the theme, `R` picks a random one;
+   - **`[P] Preview`** — preview a theme by its number;
+   - **`[S] Search`** — search themes by name;
+   - **`[R] Random`** — a random theme.
+
+A preview changes nothing on your system: the config runs from a temporary folder. Only applying a theme (Enter / entering its number) overwrites `~/.config/fastfetch`.
+
+### Installing the Icon Font (CascadiaCode Nerd Font)
+
+```bash
+bash ./install-icons.sh        # bash edition
+./go/fastcat --icons           # Go edition
 ```
 
 <details>
-<summary>Download The Required Icon Pack (For Arch Linux)</summary>
-Use This Command: <code> git clone https://aur.archlinux.org/ttf-meslo-nerd-font-powerlevel10k.git && cd ttf-meslo-nerd-font-powerlevel10k && makepkg -si && cd .. </code>
+<summary>Download the required icon pack manually (for Arch Linux)</summary>
+Command: <code>git clone https://aur.archlinux.org/ttf-meslo-nerd-font-powerlevel10k.git && cd ttf-meslo-nerd-font-powerlevel10k && makepkg -si && cd ..</code>
 </details>
 
-Back Up Your Own FastFetch Configuration
---
+### Backing Up Your Own fastfetch Config
 
 ```bash
 bash ./fastcat.sh --backup
@@ -49,97 +86,21 @@ bash ./fastcat.sh --backup
 ---
 
 ## Themes
-> [!IMPORTANT]  
-> Since the FastCat script can now preview its themes, the [FastCat's preview theme site](https://m3tozz.github.io/FastCat-Themes/) is no longer needed.
-> After selecting either the **Large** or **Small** theme section within FastCat, you can use the **P (Preview)** section to preview the theme you want.
+
+> [!IMPORTANT]
+> Since FastCat can now preview its themes, the [FastCat Themes site](https://m3tozz.github.io/FastCat-Themes/) is no longer needed.
+> After selecting the **Large** or **Small** section, press **P (Preview)** or **G (Gallery)** and browse the themes right in your terminal.
 
 <details>
-<summary>How can I add my own fastfetch configuration to the fastcat community?</summary>
- Fork this repo, add your theme, and submit a pull request.<br>
+<summary>How do I add my own fastfetch theme to the FastCat collection?</summary>
+
+Fork this repository, add a folder with your theme (it must contain a <code>fastfetch/</code> subfolder with a <code>config.jsonc</code> inside) to <code>Small-Themes</code>, <code>Large-Themes</code> or <code>Visuals-Themes</code>, and open a pull request.
 </details>
 
 ---
 
 <p align="center"><img src="https://github.com/user-attachments/assets/aa96371a-8c47-4ce8-9c89-2e482e726bf0">
-<a href="https://discord.com/invite/sQwYCZer95"><img src="https://img.shields.io/badge/Join The Community Discord Server-black?&logo=discord" hspace="10"  align="center" /></a>
-<a href="https://matrix.to/#/#neocat-channels:matrix.org"><img src="https://img.shields.io/badge/Join The Community Matrix Server-black?&logo=matrix" hspace="10"  align="center" /></a></p>
- 
----
-## Support | Bağış Yap
-
-[![Donate to HAYTAP](https://img.shields.io/badge/🐾_Donate-HAYTAP❤️-red?style=for-the-badge)](https://fonzip.com/haytap/bagis)
-
-> [!IMPORTANT]  
-> [HAYTAP (Animal Rights Federation)](https://www.haytap.org) is an independent NGO in Türkiye that protects stray animals and defends animal rights.  
-> This project is not affiliated with HAYTAP.  
-> However, if you’d like to support its spirit and purpose, you can contribute by donating directly to HAYTAP.
-
-<details>
-<summary>Why HAYTAP?</summary>
- 
----
-
-
-### 1. HAYTAP
-- Short for "Hayvan Hakları Federasyonu" (Animal Rights Federation) in Türkiye.  
-- It is an independent non-governmental organization (NGO).
-- **Example:** HAYTAP builds shelters for stray dogs.
+<a href="https://discord.com/invite/sQwYCZer95"><img src="https://img.shields.io/badge/Join the Community Discord Server-black?&logo=discord" hspace="10"  align="center" /></a>
+<a href="https://matrix.to/#/#neocat-channels:matrix.org"><img src="https://img.shields.io/badge/Join the Community Matrix Server-black?&logo=matrix" hspace="10"  align="center" /></a></p>
 
 ---
-
-### 2. Independent NGO
-- An organization that operates on its own, not controlled by the government.  
-- Their goal is usually to benefit society.
-- **Example:** Foundations that help children with leukemia are independent NGOs.
-
----
-
-### 3. Protecting Stray Animals
-- Feeding, treating, and keeping stray dogs and cats safe from harm.
-- **Example:** An association puts food bowls on the streets for stray cats.
-
----
-
-### 4. Defending Animal Rights
-- Arguing that animals also have the right to live without pain and mistreatment.
-- **Example:** Demanding a ban on animal fights.
-
----
-
-### 5. This Project is Not Affiliated with HAYTAP
-- This software or project was not made by HAYTAP itself.
-- **Example:** The person who made the theme pack is not an employee of HAYTAP.
-
----
-
-### 6. Supporting by Donating Directly to HAYTAP
-- Instead of donating to the project owner, sending money directly to HAYTAP’s account.
-- **Example:** Making a donation to HAYTAP’s IBAN via their website.
-  
-
-</details>
-
----
-
-## Contributors
-
-<a href="https://github.com/m3tozz/FastCat/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=m3tozz/FastCat&v=" />
-</a>
-
----
-
-## Star History
-
-<p align ="center"><a href="https://www.star-history.com/?repos=m3tozz%2FFastCat&type=timeline&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=m3tozz/FastCat&type=timeline&theme=dark&legend=top-left&sealed_token=t0CC9l2JnoA6QEXjF7o4lfXKxGq4KW_hWPQ9QMZW4Qpvq4CUizbVZotPvOzxBlwslgiFwiunstwlEWJ0lY1sYwFgeg9OiRj5aIZcJTnOPzHX35hMxZSO8O8YRiKxAuErCT-xqiq_OmFKYNjW5U2vqCGk9n0hi98Dkzf_S5o9PbwZIoY-hlecXLPiF9sz" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=m3tozz/FastCat&type=timeline&legend=top-left&sealed_token=t0CC9l2JnoA6QEXjF7o4lfXKxGq4KW_hWPQ9QMZW4Qpvq4CUizbVZotPvOzxBlwslgiFwiunstwlEWJ0lY1sYwFgeg9OiRj5aIZcJTnOPzHX35hMxZSO8O8YRiKxAuErCT-xqiq_OmFKYNjW5U2vqCGk9n0hi98Dkzf_S5o9PbwZIoY-hlecXLPiF9sz" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=m3tozz/FastCat&type=timeline&legend=top-left&sealed_token=t0CC9l2JnoA6QEXjF7o4lfXKxGq4KW_hWPQ9QMZW4Qpvq4CUizbVZotPvOzxBlwslgiFwiunstwlEWJ0lY1sYwFgeg9OiRj5aIZcJTnOPzHX35hMxZSO8O8YRiKxAuErCT-xqiq_OmFKYNjW5U2vqCGk9n0hi98Dkzf_S5o9PbwZIoY-hlecXLPiF9sz" />
- </picture>
-</a>
-</p>
-
----
-
-<p align="center"> <i>“Peace begins with a smile.”</i> — Mother Teresa </p>
